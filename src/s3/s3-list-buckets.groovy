@@ -8,9 +8,14 @@ import com.amazonaws.services.s3.AmazonS3ClientBuilder
 import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.Bucket
 
+// Initialize the s3 client
 final AmazonS3 s3 = AmazonS3ClientBuilder.defaultClient()
+
+// Get the bucket list
 List<Bucket> buckets = s3.listBuckets()
-println "Your Amazon S3 Buckets are:"
+
+// Print the bucket list
+println "Buckets:"
 buckets.each { bucket ->
-    println "* ${bucket.name}"
+    println "* ${bucket.name} created on ${bucket.creationDate} by ${bucket.owner.displayName}"
 }
